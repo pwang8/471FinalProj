@@ -1,5 +1,5 @@
 <?php
 session_start();
 session_destroy();
-header('Location: http://localhost:8888/CarRental/index.php');
+header('Location: http://localhost/471FinalProj/index.php');
 ?>

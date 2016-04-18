@@ -29,7 +29,7 @@ if (!isset($_SESSION['type'])){
         <div align="left"><a href="/471FinalProj/index.php"><img src="Shopping.jpg" height="90"></a></div>
     </p>
     <div align="center">
-        <a href="cars.php" class="titleButton">Products</a>
+        <a href="product.php" class="titleButton">Products</a>
         <a href="rates.php" class="titleButton">Cart</a>
         <a href="location.php" class="titleButton">Checkout</a>
     </div>
