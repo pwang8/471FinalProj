@@ -34,7 +34,7 @@ function passwordCheck($toCheck){
             $info = mysqli_fetch_array($account);
             $_SESSION['id'] = $info['EID'];
         }
-        header('Location: http://localhost:8888/CarRental/welcome.php');
+    header('Location: http://localhost:8080/Change/welcome.php');
 
         
     }
