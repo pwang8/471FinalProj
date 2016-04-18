@@ -1,10 +1,12 @@
 <?php
 
 session_start();
-$con=mysqli_connect("localhost","root","root","rent_a_car");
-if (mysqli_connect_errno($con)){
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
+   $con=mysqli_connect("localhost","root","CPSC471!","final_project");
+        if (mysqli_connect_errno($con))
+    {
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    }
+
 
 if(isset($_POST["userid"]) && isset($_POST["password"])){
     $accounts = mysqli_query($con, 'SELECT * FROM account');
@@ -13,12 +15,12 @@ if(isset($_POST["userid"]) && isset($_POST["password"])){
             passwordCheck($row);
         }
     }
-    header('Location: http://localhost:8888/CarRental/welcome.php');
+    header('Location: http://localhost:8080/Change/welcome.php');
 }
 
 function passwordCheck($toCheck){
     
-    $con=mysqli_connect("localhost","root","root","rent_a_car");
+    $con=mysqli_connect("localhost","root","root","final_project");
     if ($toCheck['PASSWORD'] == $_POST["password"]){
         $_SESSION['type'] = $toCheck['TYPE'];     //change this to whatever type account is
         $_SESSION['name'] = $toCheck['USERNAME'];
@@ -32,7 +34,7 @@ function passwordCheck($toCheck){
             $info = mysqli_fetch_array($account);
             $_SESSION['id'] = $info['EID'];
         }
-        header('Location: http://localhost:8888/CarRental/welcome.php');
+    header('Location: http://localhost:8080/Change/welcome.php');
 
         
     }

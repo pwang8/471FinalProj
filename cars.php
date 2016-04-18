@@ -3,10 +3,10 @@
         
 <div id="main" align="center">            
 
-    <h1>Select your car</h1>
+    <h1>Select your Product</h1>
     <h2>Select options from the drop down menu</h2>
 
-    <form name="formSubmit" action="car_searcher.php" method="post">
+    <form name="formSubmit" action="product_searcher.php" method="post">
            
             <select name="type" class="gap">
                 <?php 
