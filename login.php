@@ -2,11 +2,11 @@
 <?php include("Header.php")?>
 
         <center>
-            <form class="login" style="margin-top: 50px" method="post" action="login_handler.php">
+            <form class="login" style="margin-top: 50px" method="post" action="login_webservice.php">
             <table border="1">
             <tr>
                 <td style="color:white">Username</td>
-                <td><input type="text" name="userid">
+                <td><input type="text" name="username">
             </tr>
             <tr>
                 <td style="color:white">Password</td>
