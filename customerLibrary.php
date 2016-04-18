@@ -4,10 +4,9 @@ include("Header.php");
 
 $tester_cid = $_POST['tester_cid'];
 
-$update_fname = $_POST['fname'];
-$update_lname = $_POST['lname'];
-$update_minit = $_POST['minit'];
-$update_age = (is_numeric($_POST['age']) ? (int)$_POST['age']:0);
+$update_fname = $_POST['f_name'];
+$update_lname = $_POST['l_name'];
+$update_email = $_POST['address'];
 $update_email = $_POST['email'];
 $update_stname = $_POST['stname'];
 $update_city = $_POST['city'];
