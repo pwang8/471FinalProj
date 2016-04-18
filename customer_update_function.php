@@ -3,28 +3,21 @@
 include("Header.php");
 
 $tester_cid = $_POST['tester_cid'];
-
-$update_fname = $_POST['fname'];
-$update_lname = $_POST['lname'];
-$update_minit = $_POST['minit'];
-$update_age = (is_numeric($_POST['age']) ? (int)$_POST['age']:0);
-$update_email = $_POST['email'];
-$update_stname = $_POST['stname'];
-$update_city = $_POST['city'];
-$update_postc = $_POST['postc'];
-$update_phone = $_POST['phone'];
+$new_fname = $_POST['f_name'];
+$new_lname = $_POST['l_name'];
+$new_address = $_POST['address'];
+$new_phone = $_POST['phone_number'];
+$new_country = $_POST['country'];
+$new_email = $_POST['email_address'];
 
 $update_query = "UPDATE customer "
-        . "SET FNAME='".$update_fname."'"
-        . ", LNAME='".$update_lname."'"
-        . ",MINIT='".$update_minit."'"
-        . ",AGE='".$update_age."'"
-        . ", EMAIL='".$update_email."'"
-        . ", STREETNAME='".$update_stname."'"
-        . ", CITY='".$update_city."'"
-        . ", POSTALCODE='".$update_postc."'"
-        . ", PHONE='".$update_phone."'"
-        
+        . "SET f_name='".$new_fname."'"
+        . ", l_name='".$new_lname."'"
+        . ", email='".$new_email."'"
+        . ", address='".$new_address."'"
+        . ", phone='".$new_phone."'"
+        . ", country='".$new_country."'"
+        . ", email_address='".$new_email."'"
         . " WHERE CID=".$tester_cid;
 echo $update_query;
 if (!mysqli_query($con,$update_query)){
