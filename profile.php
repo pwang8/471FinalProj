@@ -22,15 +22,12 @@
     <form action="customer_update_function.php" method="POST" >  
                 
             Your ID:<br><input type="text" name="tester_cid" readonly value="<?php echo $userinfo['CID'];?>"><br>               
-            First Name:<br> <input type="text" name="fname" value="<?php echo $userinfo['FNAME'];?>"><br>
-            Last Name: <br><input type="text" name="lname" value="<?php echo $userinfo['LNAME'];?>"><br>
-            Middle Initial: <br> <input type="text" name="minit" value="<?php echo $userinfo['MINIT'];?>"><br>
-            Age: <br><input type="text" name="age" value="<?php echo $userinfo['AGE'];?>"><br>
-            Email: <br><input type="text" name="email" value="<?php echo $userinfo['EMAIL'];?>"><br>
-            Street Name:<br> <input type="text" name="stname" value="<?php echo $userinfo['STREETNAME'];?>"><br>
-            City: <br><input type="text" name="city" value="<?php echo $userinfo['CITY'];?>"><br>
-            Postal code:<br> <input type="text" name="postc" value="<?php echo $userinfo['POSTALCODE'];?>"><br>
-            Phone: <br><input type="text" name="phone"value="<?php echo $userinfo['PHONE'];?>"><br>
+            First Name: <br><input type="text" name="fname" value="<?php echo $userinfo['f_name'];?>"><br>
+            Last Name:<br> <input type="text" name="lname" value="<?php echo $userinfo['l_name'];?>"><br>
+            Address:<br> <input type="text" name="address" value="<?php echo $userinfo['address'];?>"><br>
+            Phone:<br> <input type="text" name="phone"value="<?php echo $userinfo['phone_number'];?>"><br>
+            Country:<br> <input type="text" name="country"value="<?php echo $userinfo['country'];?>"><br>
+            Email: <br><input type="text" name="email" value="<?php echo $userinfo['email_address'];?>"><br>
             <input type="submit" value = "Update"/>
     </form>
     
@@ -42,8 +39,8 @@
     </center>
     
         
-        <p>Booking History</p>
-     <table border="1" style="width:100%;background:#2dabf9">
+    <p>Booking History</p>
+    <table border="1" style="width:100%;background:#2dabf9">
             <tr>
                 <th>Type</th>
                 <th>Seats</th>
