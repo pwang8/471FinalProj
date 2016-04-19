@@ -1,6 +1,5 @@
 <?php include("Header.php"); ?>
 
-        
 <div id="main" align="center">            
 
     <h1>Select your Product</h1>
@@ -42,5 +41,25 @@
         <p><input class="submitButton" type="submit" value="Find car">
     </form>
           
+</div>
+
+<div id="dispProdDiv" on>
+        <?php
+            $results = include("list_products.php");
+            echo '<table>';
+            echo '<th>Id</th><th>Image</th><th>Name</th><th>Stock</th><th>Price</th><th>Description</th>';
+            while($row = mysqli_fetch_row($results))
+            {
+                echo '<tr>';
+                echo '<td>'.$row[0].'</td>';
+                echo '<td>'.$row[1].'</td>';
+                echo '<td>'.$row[2].'</td>';
+                echo '<td>'.$row[3].'</td>';
+                echo '<td>'.$row[4].'</td>';
+                echo '<td>'.$row[5].'</td>';
+                echo '</tr>';
+            }
+            echo '</table>';
+        ?>
 </div>
 <?php include("Footer.php"); ?>
