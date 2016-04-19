@@ -3,7 +3,7 @@
             <h1>Admin Options</h1>
             
             <br><h2>Add a new Customer</h2>
-            <form action="register.php" method="POST" >  
+            <form action="sign_up.php" method="POST" >  
                 <input type="submit" value="Add a new customer"/> 
             </form>
             
