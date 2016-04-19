@@ -23,7 +23,13 @@
         }
         echo '<div><p>SELECT COUNT(*) FROM contains WHERE customer_id ='.$_SESSION['id'].'</p></div>';
         $itemCount = mysqli_query($con, "SELECT SUM(amount) FROM contains WHERE customer_id =".$_SESSION['id']);
-        echo '<div><p>'.mysqli_fetch_array($itemCount)[0].'</p></div>';
+        echo '<div><p>'.mysqli_fetch_array($itemCount)[0].' Items in your cart</p></div>';
+        
+        $totalQuery = 'SELECT SUM(c.amount * p.price) AS total FROM contains AS c JOIN product p ON p.product_id = c.product_id WHERE c.customer_id ='.$_SESSION['id'];
+        
+        echo 'SELECT SUM(c.amount * p.price) AS total FROM contains AS c JOIN product p 
+              ON p.product_id = c.product_id WHERE c.customer_id = "1"';
+              
     ?>
     
 </div>   
