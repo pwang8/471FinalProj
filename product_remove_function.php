@@ -3,28 +3,17 @@
 
     $productID = $_POST['product_id'];
     
-    
-    if($productID != "")
+    $sql1= "DELETE FROM product WHERE product_id='".$productID."'"; 
+    if (!mysqli_query($con,$sql1))
     {
-
-           
-            $sql1= "DELETE FROM product WHERE product_id='".$productID."' ";
-            //$sql2= "DELETE booking ";
-
-            if (!mysqli_query($con,$sql2))
-            {
-                die('Error: ' . mysqli_error($con));
-            }else {
-                echo "<script>
-                alert('Removed product ');
-                window.location.href='http://localhost/471Finalproj/profile.php';
-                </script>";
-            }
-        }    
+        die('Error: ' . mysqli_error($con));
     }
     else
     {
-        echo "No such product exists.";
+        echo "<script>
+        alert('Removed product');
+        window.location.href='http://localhost/471FinalProj/adminOptions.php';
+        </script>";
     }
 
     include("Footer.php");
