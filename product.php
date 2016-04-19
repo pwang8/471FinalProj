@@ -47,7 +47,7 @@
         <?php
             $results = include("list_products.php");
             echo '<table>';
-            echo '<th>Id</th><th>Image</th><th>Name</th><th>Stock</th><th>Price</th><th>Description</th>';
+            echo '<th>Id</th><th>Image</th><th>Name</th><th>Stock</th><th>Price</th><th>Description</th><th>Category</th>';
             while($row = mysqli_fetch_row($results))
             {
                 echo '<tr>';
@@ -57,6 +57,7 @@
                 echo '<td>'.$row[3].'</td>';
                 echo '<td>'.$row[4].'</td>';
                 echo '<td>'.$row[5].'</td>';
+                echo '<td>'.$row[6].'</td>';
                 echo '</tr>';
             }
             echo '</table>';

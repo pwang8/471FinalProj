@@ -8,15 +8,16 @@
                 Image URL: <input type="text" name="imageUrl"><br>
                 Category: <select name="category" required>
                     <option value="">--Category--</option>
+                    <option>New Category</option>
                     <?php 
-                        $sql = mysqli_query($con, "SELECT DISTINCT category_name FROM categories");
+                        $sql = mysqli_query($con, "SELECT DISTINCT category FROM product");
                         while ($row = mysqli_fetch_row($sql))
                         {
                             echo '<option>'.$row[0].'</option>';
                         }
-                        
                     ?>
-                </select><br>
+                </select>
+                <input type="text" name="newCategory"><br>
                 Stock: <input type="text" name="stock" required><br>
                 Price: <input type="text" name="price" required><br>
                 Description: <input type="text" name="desc" required><br>

@@ -54,7 +54,7 @@
     </table> 
 
     <form style="margin-top:20px" class="login"><p> Click below to find out more </p>
-        <a href="http://localhost:8888/CarRental/cars.php" class="submitButton">Car Selection</a>
+        <a href="http://localhost/471FinalProj/product.php" class="submitButton">Car Selection</a>
     </form>
 </div>   
 <?php include("Footer.php"); ?>
