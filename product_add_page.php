@@ -3,26 +3,23 @@
     <body> 
         <div id="main" align="center">
         <h1>Add Product Page (ADMIN)</h1>
-            <form action="product_add_function.php" method="POST" >  
-                
-                Availability: <select name="availability" required>
-                    <option value="NO">--Availability--</option>
-                    <option>YES</option>
-                    <option>NO</option>
-                </select><br>
+            <form action="product_add_function.php" method="POST" >
+                Product Name: <input type="text" name="name" required><br>
+                Image URL: <input type="text" name="imageUrl"><br>
                 Category: <select name="category" required>
                     <option value="">--Category--</option>
-                    <option>Hats</option>
-                    <option>Watch</option>
-                    <option>Pants</option>
-                    <option>Jackets</option>
-                    <option>Sports</option>
-                    <option>Shoes</option>
-                    <option>Accessories</option>
+                    <?php 
+                        $sql = mysqli_query($con, "SELECT DISTINCT category_name FROM categories");
+                        while ($row = mysqli_fetch_row($sql))
+                        {
+                            echo '<option>'.$row[0].'</option>';
+                        }
+                        
+                    ?>
                 </select><br>
                 Stock: <input type="text" name="stock" required><br>
                 Price: <input type="text" name="price" required><br>
-
+                Description: <input type="text" name="desc" required><br>
                 </select><br>
                 <input type="submit"/>
                  
