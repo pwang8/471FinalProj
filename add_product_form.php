@@ -2,15 +2,15 @@
     <?php include("Header.php"); ?>
     <body> 
         <div id="main" align="center">
-        <h1>Add Car Page (ADMIN)</h1>
-            <form action="car_add_function.php" method="POST" >  
+        <h1>Add Product </h1>
+            <form action="add_product_webservice.php" method="POST" >  
                 
-                Availability: <select name="availability" required>
+                Name: <select name="availability" required>
                     <option value="NO">--Availability--</option>
                     <option>YES</option>
                     <option>NO</option>
                 </select><br>
-                Type: <select name="type" required>
+                Image: <select name="type" required>
                     <option value="">--Type--</option>
                     <option>Economy</option>
                     <option>Family</option>
@@ -20,15 +20,10 @@
                     <option>Off-roaders</option>
                     <option>Commercial</option>
                 </select><br>
-                Seats: <input type="text" name="seats" required><br>
-                Rate: <input type="text" name="rate" required><br>
-                Color: <select type name="color" required>
-                    <option value="">--Color--</option>
-                    <option>Red</option>
-                    <option>Blue</option>
-                    <option>Black</option>
-                    <option>White</option>
-                    <option>Silver</option>
+                Stock: <input type="text" name="stock" required><br>
+                Price: <input type="text" name="price" required><br>
+                Description: <input type name="description" required>
+
                 </select><br>
                 Model: <input type="text" name="model" required><br>
                 <input type="submit"/>

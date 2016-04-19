@@ -15,6 +15,6 @@ if (!mysqli_query($con,$sql))
 die('Error: ' . mysqli_error($con));
 }
 else
-echo "1 record added";
+echo "1 product added";
 
 include("Footer.php");

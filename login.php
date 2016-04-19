@@ -19,7 +19,7 @@
             </table>
         </form>
             <br>
-            <form class="login" action="register.php"><p>No account yet? Sign up!</p>
+            <form class="login" action="sign_up.php"><p>No account yet? Sign up!</p>
                 <p><input type="submit" value="Sign up"></p>
             </form>
         </center>
