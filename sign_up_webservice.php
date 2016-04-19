@@ -27,7 +27,7 @@ if ((!($usernames_found=mysqli_query($con,$sql))))
 if (($rows = mysqli_num_rows($usernames_found))==0)
 {
     $sql1= "INSERT INTO customer (customer_id,f_name,l_name,address,phone_number,country, customer_username, customer_password, email_address)
-        VALUES (NULL,'".$fname."','".$lname."','".$address."','".$phone."','".$country."','".$customer_username."','".$customer_password."','".$email."')";
+        VALUES (NULL,'".$fname."','".$lname."','".$address."','".$phone."','".$country."','".$username."','".$password."','".$email."')";
     if ((!mysqli_query($con,$sql1)))
     {
         die('Error: ' . mysqli_error($con));
