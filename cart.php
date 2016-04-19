@@ -21,7 +21,9 @@
                 echo '</tr>';
             }
         }
-        
+        echo '<div><p>SELECT COUNT(*) FROM contains WHERE customer_id ='.$_SESSION['id'].'</p></div>';
+        $itemCount = mysqli_query($con, "SELECT SUM(amount) FROM contains WHERE customer_id =".$_SESSION['id']);
+        echo '<div><p>'.mysqli_fetch_array($itemCount)[0].'</p></div>';
     ?>
     
 </div>   
