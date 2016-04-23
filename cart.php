@@ -27,9 +27,9 @@
         
         $totalQuery = 'SELECT SUM(c.amount * p.price) AS total FROM contains AS c JOIN product p ON p.product_id = c.product_id WHERE c.customer_id ='.$_SESSION['id'];
         
-        echo 'SELECT SUM(c.amount * p.price) AS total FROM contains AS c JOIN product p 
-              ON p.product_id = c.product_id WHERE c.customer_id = "1"';
-              
+        echo $totalQuery;
+        $total = mysqli_query($con,$totalQuery);
+        echo '<div><p>'.number_format(mysqli_fetch_array($total)[0],2).'</p></div>';      
     ?>
     
 </div>   
