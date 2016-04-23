@@ -18,8 +18,8 @@
                     ?>
                 </select>
                 <input type="text" name="newCategory"><br>
-                Stock: <input type="text" name="stock" required><br>
-                Price: <input type="text" name="price" required><br>
+                Stock: <input type="number" name="stock" required><br>
+                Price: <input type="number" step="0.01" name="price" required><br>
                 Description: <input type="text" name="desc" required><br>
                 </select><br>
                 <input type="submit"/>
