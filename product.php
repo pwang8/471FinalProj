@@ -1,4 +1,41 @@
-<?php include("Header.php"); ?>
+<?php include("Header.php");?>
+<script>
+function addToCart(p_id, session_id)
+{
+    var Webservice_URL = "http://localhost/471FinalProj/webservice.php"; 
+    var amount = document.getElementById("product"+p_id+"input").value;
+    
+    //AJAX Request
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function()
+    {
+        //alert(xhttp.readyState+"<- rT, status ->"+xhttp.status);
+        //REPLY FROM WEBSERVICE
+        if (xhttp.readyState == 4 && xhttp.status == 200)
+        {
+            //Receive and decode the response to JSON object
+            var response = JSON.parse(xhttp.responseText);
+            
+            //Check if the success returned was false
+            if (!response.success)
+            {
+                alert(response.message); //Displays the error message returned from the server
+            }
+            else //If everything was okay
+            {
+                //Clears the textbox
+                document.getElementById("product"+p_id+"input").value = "";
+                
+                //Displays the message returned from the server
+                alert(response.message);
+            }
+        }
+    };
+    //REQUEST TO WEBSERVICE
+    xhttp.open("GET", Webservice_URL + "?method=addToCart&productId="+p_id+"&amount="+amount+"&sessionId="+session_id, true);
+    xhttp.send();
+}
+</script>
 
 <div id="main" align="center">            
 
@@ -58,6 +95,8 @@
                 echo '<td>'.$row[4].'</td>';
                 echo '<td>'.$row[5].'</td>';
                 echo '<td>'.$row[6].'</td>';
+                echo '<td><input type="number" min="1" style="width:50" id="product'.$row[0].'input"></td>';
+                echo '<td><a href="javascript:addToCart('.$row[0].','.$_SESSION['id'].')">Add</a></td>';
                 echo '</tr>';
             }
             echo '</table>';
