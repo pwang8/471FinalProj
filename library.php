@@ -217,7 +217,6 @@
         }
         return $toReturn;
     }
-<<<<<<< HEAD
     
     function filteredProducts($filter){
         global $link;
@@ -249,7 +248,7 @@
             $filteredProdArray[] = $productInfo;
         }
         return $filteredProdArray;
-=======
+    }
 
     function getCustomer($sessionId)
     {
@@ -260,7 +259,6 @@
         $results = mysqli_query($link, $SQL);
         $userinfo = mysqli_fetch_row($results);
         return $userinfo;
->>>>>>> origin/master
     }
     
     function updateCustomer($cID, $f_name, $l_name, $address, $phone_number, $country, $username, $password, $email)

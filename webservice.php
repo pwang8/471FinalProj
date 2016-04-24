@@ -12,16 +12,13 @@
         json_purchaseCredit($_GET["sessionId"], $_GET["cardNumber"],$_GET["lName"],$_GET["fName"],$_GET["expiryDate"],$_GET["cvc"]);
     if ($method == "fillCartDiv")
         json_fillCartDiv($_GET['sessionId']);
-<<<<<<< HEAD
     if ($method == "getFilteredProducts")
         json_getFilteredProducts($_GET['selectedFilter']);
-=======
     if($method == "getCustomer")
         json_getCustomer($_GET['sessionId']);
     if($method == "updateCustomer")
         json_updateCustomer($_GET['cID'], $_GET['f_name'], $_GET['l_name'], $_GET['address'], $_GET['phone_number'], $_GET['country'], $_GET['username'], $_GET['password'], $_GET['email']);
     
->>>>>>> origin/master
     //Functions ---------------------------------------------------------------------
     
     function json_addToCart($pId, $amount, $sessionId)
@@ -168,8 +165,8 @@
 		echo json_encode($output);
     }
 
-<<<<<<< HEAD
-    function json_getFilteredProducts($filter){
+    function json_getFilteredProducts($filter)
+    {
         
         
         $output = array();
@@ -178,7 +175,7 @@
         $output["data"] = filteredProducts($filter);
         echo json_encode($output);
     }
-=======
+    
     function json_getCustomer($cID)
     {
         $valid = false;
@@ -213,8 +210,6 @@
         $output["message"] = $message;
         echo json_encode($output);
     }
-
->>>>>>> origin/master
 
 
 
