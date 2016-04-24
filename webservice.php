@@ -8,8 +8,9 @@
         json_removeFromCart($_GET["productId"], $_GET["sessionId"]);
     if ($method == "purchasePaypal")
         json_purchasePaypal($_GET["sessionId"], $_GET["user"], $_GET["pass"]);
-    //if ($method == "purchaseCredit")
-    //    json_purchaseCredit($_GET["sessionId"]);
+    if ($method == "purchaseCredit")
+        json_purchaseCredit($_GET["cardNumber"],$_GET["lName"],$_GET["fName"],$_GET["expiryDate"],$_GET["cvc"]);
+    
     
     //Functions ---------------------------------------------------------------------
     
@@ -84,6 +85,18 @@
                 $valid = createPaypal($purchaseId, $user, $pass);
             }
         }
+        
+		$output = array();
+		$output["success"] = $valid;
+		$output["message"] = $message;
+		echo json_encode($output); //Prints your dictionary in JSON format
+    }
+    
+    function purchaseCredit(cardNumber,lName,fName,expiryDate,Cvc)
+    {
+        $valid = true;
+        $message = "Hi".cardNumber.lName.fName.expiryDate.Cvc;
+        
         
 		$output = array();
 		$output["success"] = $valid;

@@ -2,6 +2,7 @@
 <script>
 function creditPurchaseCart(sessionId)
 {
+    alert("hi");
     var Webservice_URL = "http://localhost/471FinalProj/webservice.php"; 
     var cardNumber = document.creditForm.creditCardNumber.value;
     var cardFName = document.creditForm.creditFName.value;
@@ -13,7 +14,7 @@ function creditPurchaseCart(sessionId)
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function()
     {
-        //alert(xhttp.readyState+"<- rT, status ->"+xhttp.status);
+        alert(xhttp.readyState+"<- rT, status ->"+xhttp.status);
         //REPLY FROM WEBSERVICE
         if (xhttp.readyState == 4 && xhttp.status == 200)
         {
@@ -33,14 +34,14 @@ function creditPurchaseCart(sessionId)
         }
     };
     //REQUEST TO WEBSERVICE
-    xhttp.open("GET", Webservice_URL + "?method=purchaseCredit&sessionId="+sessionId+"&user="+paypalUser+"&pass="+paypalPass, true);
+    xhttp.open("GET", Webservice_URL + "?method=purchaseCredit&sessionId="+sessionId+"&cardNumber="+creditCardNumber+"&lName="+creditLName+"&fName="+creditFName+"&expiryDate="+creditExpiryDate+"&cvc="+creditCVC, true);
     xhttp.send();
 }
 </script>
 <?php
     echo "<h1>Credit Purchase</h1>";
-    echo "<form name='creditForm' action='creditPurchaseCart(".$_SESSION['id'].")'>";
-        echo "Card Number: <input type='number' min='1000000000000000' max='999999999999999' name='creditCardNumber' required><br>";
+    echo "<form name='creditForm' action='javascript:creditPurchaseCart(".$_SESSION['id'].")'>";
+        echo "Card Number: <input type='number' min='1000000000000000' max='9999999999999999' name='creditCardNumber' required><br>";
         echo "First Name: <input type='text' name='creditFName' required><br>";
         echo "Last Name: <input type='text' name='creditLName' required><br>";
         echo "Expiry Date: <input type='text' name='creditExpiryDate' required><br>";
