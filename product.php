@@ -46,30 +46,30 @@ function addToCart(p_id, session_id)
            
             <select name="category" class="gap">
                 <?php 
-                $sql = mysqli_query($con, "SELECT DISTINCT CATEGORY FROM product");
+                $sql = mysqli_query($con, "SELECT DISTINCT category FROM product");
                 echo '<option value="">--Type--</option>';
                 while ($row = mysqli_fetch_array($sql)){
-                echo '<option>'.$row['CATEGORY'].'</option>';
+                echo '<option>'.$row['category'].'</option>';
                 }
                 ?>
             </select>  
 
             <select name="price" class="gap">
                 <?php 
-                $sql = mysqli_query($con, "SELECT DISTINCT PRICE FROM product");
-                echo '<option value="">--Seats--</option>';
+                $sql = mysqli_query($con, "SELECT DISTINCT price FROM product");
+                echo '<option value="">--Price--</option>';
                 while ($row = mysqli_fetch_array($sql)){
-                echo '<option>'.$row['PRICE'].'</option>';
+                echo '<option>'.$row['price'].'</option>';
                 }
                 ?>
             </select>  
 
             <select name="stock" class="gap">
                 <?php 
-                $sql = mysqli_query($con, "SELECT *  FROM product WHERE stock >0");
+                $sql = mysqli_query($con, "SELECT DISTINCT stock FROM product");
                 echo '<option value="">--Stock--</option>';
                 while ($row = mysqli_fetch_array($sql)){
-                echo '<option>'.$row['STOCK'].'</option>';
+                echo '<option>'.$row['stock'].'</option>';
                 }
                 ?>
             </select>  

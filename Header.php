@@ -26,12 +26,12 @@ if (!isset($_SESSION['type'])){
         else {
             echo '<div align="right"><a href="login.php" class="loginButton">Log in</a></div>';
         }?>
-        <div align="left"><a href="/471FinalProj/index.php"><img src="Shopping.jpg" height="90"></a></div>
+        <div align="left"><a href="/471FinalProj/index.php"><img src="Shopping.jpg" width = "1000"height="90"></a></div>
     </p>
     <div align="center">
         <a href="product.php" class="titleButton">Products</a>
         <a href="cart.php" class="titleButton">Cart</a>
-        <a href="aboutus.php" class="titleButton">AboutUs</a>
+        <a href="aboutus.php" class="titleButton">About Us</a>
 
     </div>
     <body>
@@ -41,4 +41,5 @@ if (!isset($_SESSION['type'])){
     {
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
+    ?>
     

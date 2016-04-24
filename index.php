@@ -7,9 +7,9 @@
            
         <table align="center">
             <tr>
-                <td align="center"><figure><a href="cars.php"><img src="rent_logo.png" height="200px" style="margin:0px 10px"></a><figcaption>Rent a car</figcaption></figure></td>
-                <td align="center"><figure><a href="rates.php"><img src="rate_logo.png" height="200px" style="margin:0px 10px"></a><figcaption>Check prices</figcaption></figure></td>
-                <td align="center"><figure><a href="aboutus.php"><img src="founders_logo.png" height="200px" style="margin:0px 10px"></a><figcaption>Find out who we are</figcaption></figure></td>
+                <td align="center"><figure><a href="product.php"><img src="product_logo.png" width = "180" height="200px" style="margin:0px 10px"></a><figcaption>Purchase products</figcaption></figure></td>
+                <td align="center"><figure><a href="cart.php"><img src="cart_logo.png" height="200px" style="margin:0px 10px"></a><figcaption>Check your shopping cart</figcaption></figure></td>
+                <td align="center"><figure><a href="aboutus.php"><img src="us_logo.jpg" height="200px" style="margin:0px 10px"></a><figcaption>Find out who we are</figcaption></figure></td>
             </tr>
         </table>
       
