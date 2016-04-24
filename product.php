@@ -106,23 +106,12 @@ function fillProductDiv(responseData,sessionID){
                 <option value="Name">Name:A-Z</option>
             </select>  
 
-
-<<<<<<< HEAD
         <p><input class="submitButton" type="submit" value="orderProducts">
     </form>
           
     <div id="dispProdDiv">
         <?php 
                 echo '<body id="dispProdBody" onload="getFilteredProducts('.$_SESSION['id'].')">';
-            
-=======
-
-        <p><input class="submitButton" type="submit" value="Filter Products">
-    </form>
-          
-    <div id="dispProdDiv">
-            <?php
->>>>>>> 33075f3e5257e39f5526aae40eff8ffc3476ae53
                 $results = include("list_products.php");
                 echo '<table border=1px>';
                 echo '<th>Id</th><th>Image</th><th>Name</th><th>Stock</th><th>Price</th><th>Description</th><th>Category</th><th>Qty</th><th>Add</th>';
