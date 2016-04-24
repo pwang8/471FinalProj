@@ -61,6 +61,9 @@ function removeFromCart(p_id, session_id)
         $total = mysqli_query($con,$totalQuery);
         echo '<div><p>Your total is: $'.number_format(mysqli_fetch_array($total)[0],2).'</p></div>';      
     ?>
-    
-</div>   
+    <div id="checkoutPanel">
+        <button onclick="window.location='paypal.php';">PayPal</button>
+        <button onclick="window.location='credit.php'">Credit</button>
+    </div>
+</div>
 <?php include("Footer.php"); ?>

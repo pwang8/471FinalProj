@@ -6,6 +6,10 @@
         json_addToCart($_GET["productId"],$_GET["amount"],$_GET["sessionId"]);
     if ($method == "removeFromCart")
         json_removeFromCart($_GET["productId"], $_GET["sessionId"]);
+    if ($method == "purchasePaypal")
+        json_purchasePaypal($_GET["sessionId"], $_GET["user"], $_GET["pass"]);
+    //if ($method == "purchaseCredit")
+    //    json_purchaseCredit($_GET["sessionId"]);
     
     //Functions ---------------------------------------------------------------------
     
@@ -58,9 +62,39 @@
 		echo json_encode($output); //Prints your dictionary in JSON format
     }
 
+    function json_purchasePaypal($sessionId, $user, $pass)
+    {
+        $valid = false;
+        $message = "default message";
+        
+        if(isset($sessionId) && isset($user) && isset($pass))
+        {
+            $totalCost = calculateTotalCost($sessionId);
+            //Creates a general purchase on the database
+            $valid = createPurchase($sessionId, $totalCost);
+            if(!$valid)
+            {
+                $message = "Something went wrong with the purchase";
+            }
+            else
+            {
+                $message = "Purchase successful";
+                $purchaseId = getRecentPurchaseId();
+                //Make a new instance of paypal
+            }
+        }
+        
+		$output = array();
+		$output["success"] = $valid;
+		$output["message"] = $message;
+		echo json_encode($output); //Prints your dictionary in JSON format
+    }
 
-
-
+    //filler function
+    function json_calculateTotalCost($sessionId)
+    {
+        return calculateTotalCost($sessionId);
+    }
 
 
 
