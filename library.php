@@ -214,10 +214,40 @@
         }
         return $toReturn;
     }
-
+    
+    function filteredProducts($filter){
+        global $link;
+        $SQL = "";
+        if($filter == "None")
+            $SQL="SELECT * FROM product";
+        elseif($filter=="InStock")
+            $SQL="SELECT * FROM product WHERE stock>0";
+        elseif($filter=="$-$$")
+            $SQL="SELECT * FROM product ORDER BY price ";
+        elseif($filter=="$$-$")
+            $SQL="SELECT * FROM product ORDER BY price DESC";
+        elseif($filter=="Category")
+            $SQL="SELECT * FROM product ORDER BY category";
+        elseif($filter=="Name")
+            $SQL="SELECT * FROM product ORDER BY product_name";
+        
+        $filteredProd = mysqli_query($link, $SQL);
+        $filteredProdArray = array();
+        while($row = mysqli_fetch_array($filteredProd)){
+            $productInfo = array();
+            $productInfo[] = $row[0];
+            $productInfo[] = $row[1];
+            $productInfo[] = $row[2];
+            $productInfo[] = $row[3];
+            $productInfo[] = $row[4];
+            $productInfo[] = $row[5];
+            $productInfo[] = $row[6]; 
+            $filteredProdArray[] = $productInfo;
+        }
+        return $filteredProdArray;
+    }
     
     
-
 
 
 

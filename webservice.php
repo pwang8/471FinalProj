@@ -12,7 +12,8 @@
         json_purchaseCredit($_GET["sessionId"], $_GET["cardNumber"],$_GET["lName"],$_GET["fName"],$_GET["expiryDate"],$_GET["cvc"]);
     if ($method == "fillCartDiv")
         json_fillCartDiv($_GET['sessionId']);
-    
+    if ($method == "getFilteredProducts")
+        json_getFilteredProducts($_GET['selectedFilter']);
     //Functions ---------------------------------------------------------------------
     
     function json_addToCart($pId, $amount, $sessionId)
@@ -159,9 +160,15 @@
 		echo json_encode($output);
     }
 
-
-
-
+    function json_getFilteredProducts($filter){
+        
+        
+        $output = array();
+        $output["success"] = true;
+        $output["message"] = "The filtered Products are:";
+        $output["data"] = filteredProducts($filter);
+        echo json_encode($output);
+    }
 
 
 
