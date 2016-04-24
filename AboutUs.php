@@ -6,7 +6,7 @@
                 to upload the products they wish to sell, allowing the customers to shop.  We pride ourselves in
                 in offering the cheapest, and most user friendly interface in North America</p>
             <h1>About Us</h1>
-            <p>Rent-A-Car is currently owned by three creators; Paul Wang, Chris Neave , SanHa Kim</p>
+            <p>Shopping Online is currently owned by three creators; Paul Wang, Chris Neave , SanHa Kim</p>
             
             <p>Enjoy!</p>
             <p><?php session_start();

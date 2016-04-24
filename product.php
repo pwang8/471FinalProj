@@ -1,5 +1,6 @@
 <?php include("Header.php");?>
 <script>
+var globalSelectedValue = "None";
 function addToCart(p_id, session_id)
 {
     var Webservice_URL = "http://localhost/471FinalProj/webservice.php"; 
@@ -41,9 +42,6 @@ function getFilteredProducts(cID)
     
     var Webservice_URL = "http://localhost/471FinalProj/webservice.php"; 
     
-    var selectorObj = document.getElementById("selector");
-    var selectedValue= selectorObj.options[selectorObj.selectedIndex].value;
-    
     //AJAX Request
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function()
@@ -67,10 +65,9 @@ function getFilteredProducts(cID)
         }
     };
     //REQUEST TO WEBSERVICE
-    xhttp.open("GET", Webservice_URL + "?method=getFilteredProducts&selectedFilter="+selectedValue, true);
+    xhttp.open("GET", Webservice_URL + "?method=getFilteredProducts&selectedFilter="+globalSelectedValue, true);
     xhttp.send();
 }
-
 function fillProductDiv(responseData,sessionID)
 {
     var html = '<table border =1px>';
@@ -98,21 +95,17 @@ function fillProductDiv(responseData,sessionID)
     <h1>Select your Product</h1>
     <h2>Select options from the drop down menu</h2>
     <?php
-        echo '<form name="formSubmit" onsubmit="getFilteredProducts('.$_SESSION['id'].')">';
-               
-        echo    '<select id="selector" class="gap">';
-        echo       '<option value="None">--Filters--</option>';
-        echo        '<option value="InStock">In Stock</option>';
-        echo        '<option value="$-$$">Price: $-$$</option>';
-        echo        '<option value="$$-$">Price: $$-$</option>';
-        echo        '<option value="Category">Category:A-Z</option>';
-        echo        '<option value="Name">Name:A-Z</option>';
-        echo    '</select>';
-
-        echo    '<p><input class="submitButton" type="submit" value="Filter Products"></p>';
-        echo    '</form>';
+    
+        echo '<input class="submitButton" type="button" value="None" onclick="javascript:globalSelectedValue=\'None\'"></input>';
+        echo '<input class="submitButton" type="button" value="InStock" onclick="javascript:globalSelectedValue=\'InStock\'"></input>';
+        echo '<input class="submitButton" type="button" value="$-$$" onclick="javascript:globalSelectedValue=\'$-$$\'"></input>';
+        echo '<input class="submitButton" type="button" value="$$-$" onclick="javascript:globalSelectedValue=\'$$-$\'"></input>';
+        echo '<input class="submitButton" type="button" value="Category" onclick="javascript:globalSelectedValue=\'Category\'"></input>';
+        echo '<input class="submitButton" type="button" value="Name" onclick="javascript:globalSelectedValue=\'Name\'"></input>';
         
-        //echo '<body onload="getFilteredProducts('.$_SESSION['id'].')"/>';
+        echo '<input class="submitButton" type="button" value="Filter Products" onclick="javascript:getFilteredProducts('.$_SESSION['id'].')">';
+        
+        echo '<body onload="getFilteredProducts('.$_SESSION['id'].')"/>';
        
         ?>
         <div id ="dispProdDiv">
