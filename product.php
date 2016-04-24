@@ -73,8 +73,8 @@ function getFilteredProducts(cID)
 
 function fillProductDiv(responseData,sessionID)
 {
-    var html = "<table border =1px>";
-    html+='<th>Id</th><th>Image</th><th>Name</th><th>Stock</th><th>Price</th><th>Description</th><th>Category</th><th>Qty</th><th>Add</th>';
+    var html = '<table border =1px>';
+    html+='<tr><th>Id</th><th>Image</th><th>Name</th><th>Stock</th><th>Price</th><th>Description</th><th>Category</th><th>Qty</th><th>Add</th></tr>';
     for(var i =0; responseData.length > i; i++)
     {
             html+='<tr>';
@@ -89,13 +89,8 @@ function fillProductDiv(responseData,sessionID)
             html+='<td><a href="javascript:addToCart('+responseData[i][0]+','+sessionID+')">Add</a></td>';
             html+='</tr>';
     }
-    html += "</table>";
-    
-    alert(document.getElementById("dispProdDiv"));
+    html += '</table>';
     document.getElementById("dispProdDiv").innerHTML = html;
-    console.log(document.getElementById("dispProdDiv"));
-    
-    alert("Console reading time");
 }
 </script>
 <div id="prodMain" class="window" align="center">            
