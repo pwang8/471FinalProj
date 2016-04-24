@@ -91,7 +91,7 @@ function fillCartDiv(cID)
     xhttp.send();
 }
 </script>
-<div id="main" align="center" style="padding:50px">
+<div id="main" class="window" align="center" style="padding:50px">
     <?php 
         if($_SESSION['type']=="g"){
             echo '<div><p>You must sign in in order to view your cart!</p></div>';

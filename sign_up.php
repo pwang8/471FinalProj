@@ -1,6 +1,6 @@
   
 <?php include("Header.php"); ?> 
-<div id="main">
+<div id="main" class="window">
 <center><h1>New Customer Sign up</h1> </center>
     <center>      
        
