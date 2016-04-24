@@ -94,6 +94,26 @@
         $purchaseId = mysqli_fetch_row($purchaseId)[0];
         return $purchaseId;
     }
+    
+    function createPaypal($purchaseId, $user, $pass)
+    {
+        $success = false;
+        global $link;
+        
+        //clean variables
+        $purchaseId = mysqli_real_escape_string($link, $purchaseId);
+        $user = mysqli_real_escape_string($link, $user);
+        $pass = mysqli_real_escape_string($link, $pass);
+        
+        $SQL = "INSERT INTO `paypal`(`purchase_id`, `paypal_username`, `paypal_password`) VALUES ('".$purchaseId."','".$user."','".$pass."')";
+        $results = mysqli_query($link,$SQL);
+        if($results)
+        {
+            $success = true;
+        }
+        
+        return $success;
+    }
 
     function calculateTotalCost($sessionId)
     {

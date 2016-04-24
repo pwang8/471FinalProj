@@ -78,28 +78,28 @@ function addToCart(p_id, session_id)
         <p><input class="submitButton" type="submit" value="Find car">
     </form>
           
+    <div id="dispProdDiv" on>
+            <?php
+                $results = include("list_products.php");
+                echo '<table border=1px>';
+                echo '<th>Id</th><th>Image</th><th>Name</th><th>Stock</th><th>Price</th><th>Description</th><th>Category</th><th>Qty</th><th>Add</th>';
+                while($row = mysqli_fetch_row($results))
+                {
+                    echo '<tr>';
+                    echo '<td>'.$row[0].'</td>';
+                    echo '<td>'.$row[1].'</td>';
+                    echo '<td>'.$row[2].'</td>';
+                    echo '<td>'.$row[3].'</td>';
+                    echo '<td>'.$row[4].'</td>';
+                    echo '<td>'.$row[5].'</td>';
+                    echo '<td>'.$row[6].'</td>';
+                    echo '<td><input type="number" min="1" style="width:50" id="product'.$row[0].'input"></td>';
+                    echo '<td><a href="javascript:addToCart('.$row[0].','.$_SESSION['id'].')">Add</a></td>';
+                    echo '</tr>';
+                }
+                echo '</table>';
+            ?>
+    </div>
 </div>
 
-<div id="dispProdDiv" on>
-        <?php
-            $results = include("list_products.php");
-            echo '<table>';
-            echo '<th>Id</th><th>Image</th><th>Name</th><th>Stock</th><th>Price</th><th>Description</th><th>Category</th>';
-            while($row = mysqli_fetch_row($results))
-            {
-                echo '<tr>';
-                echo '<td>'.$row[0].'</td>';
-                echo '<td>'.$row[1].'</td>';
-                echo '<td>'.$row[2].'</td>';
-                echo '<td>'.$row[3].'</td>';
-                echo '<td>'.$row[4].'</td>';
-                echo '<td>'.$row[5].'</td>';
-                echo '<td>'.$row[6].'</td>';
-                echo '<td><input type="number" min="1" style="width:50" id="product'.$row[0].'input"></td>';
-                echo '<td><a href="javascript:addToCart('.$row[0].','.$_SESSION['id'].')">Add</a></td>';
-                echo '</tr>';
-            }
-            echo '</table>';
-        ?>
-</div>
 <?php include("Footer.php"); ?>

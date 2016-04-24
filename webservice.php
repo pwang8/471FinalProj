@@ -81,6 +81,7 @@
                 $message = "Purchase successful";
                 $purchaseId = getRecentPurchaseId();
                 //Make a new instance of paypal
+                $valid = createPaypal($purchaseId, $user, $pass);
             }
         }
         

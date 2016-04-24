@@ -61,8 +61,8 @@ function removeFromCart(p_id, session_id)
                 echo '</tr>';
             }
         echo '<div id="checkoutPanel">';
-        echo '<button onclick="window.location="paypal.php">PayPal</button>';
-        echo '<button onclick="window.location="credit.php">Credit</button>';
+        echo '<button onclick="window.location=\'paypal.php\'">PayPal</button>';
+        echo '<button onclick="window.location=\'credit.php\'">Credit</button>';
         echo '</div>';
         }
               

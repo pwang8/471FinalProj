@@ -1,6 +1,6 @@
 <?php include("Header.php");?>
 <script>
-function purchaseCart(sessionId)
+function paypalPurchaseCart(sessionId)
 {
     var Webservice_URL = "http://localhost/471FinalProj/webservice.php"; 
     var paypalUser = document.paypalForm.paypalEmail.value;
@@ -36,7 +36,7 @@ function purchaseCart(sessionId)
 </script>
 <?php
     echo "<h1>PayPal Purchase</h1>";
-    echo '<form name="paypalForm" action="javascript:purchaseCart('.$_SESSION['id'].')">';
+    echo '<form name="paypalForm" action="javascript:paypalPurchaseCart('.$_SESSION['id'].')">';
         echo 'Email: <input type="text" name="paypalEmail" required><br>';
         echo 'Password: <input type="password" name="paypalPassword" required><br>';
         echo '<input type="submit"/>';
