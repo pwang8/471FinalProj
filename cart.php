@@ -59,8 +59,10 @@ function fillCartDiv(cID)
             else //If everything was okay
             {
                 //Displays the message returned from the server
-               
-                var html =  "<div><p>You have: ";
+                if(response.data[0]==null){
+                    response.data[0] = 0;
+                }
+                var html =  "<div><h1> List of items </h1><p>You have: ";
                 html += response.data[0]+" items in your cart</p>";
                 html += "<p>For a total of: $"+response.data[1]+"</p>";
                 html+='<div id="checkoutPanel"><button onclick="window.location=\'paypal.php\'">PayPal</button>';
