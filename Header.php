@@ -1,10 +1,7 @@
 <?php session_start();
 if (!isset($_SESSION['type'])){
         $_SESSION['type'] = "g";
-        //g=guest a=admin c=customer
     }
-    //setcookie(name, value, expire, path, domain);
-    //setcookie("user", "Jake", time()+3600);
 ?>
 
 <html>

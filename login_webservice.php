@@ -22,17 +22,16 @@ function passwordCheck($toCheck){
     $con=mysqli_connect("localhost","root","CPSC471!","final_project");
     if ($toCheck['customer_password'] == $_POST["password"]){
         $_SESSION['name'] = $toCheck['customer_username'];
-        if ($toCheck['id'] != 0){
-            $_SESSION['type'] = 'C';
-            $_SESSION['id'] = $toCheck['customer_id']; 
-        }
-        else{
+        if ($toCheck['customer_id'] == 0){
             $_SESSION['type'] = 'A';
             $_SESSION['id'] = $toCheck['customer_id'];
         }
+        else{
+            $_SESSION['type'] = 'C';
+            $_SESSION['id'] = $toCheck['customer_id']; 
+        }
 
         header('Location: http://localhost/471FinalProj/logged_in.php');
-  
     }
 }
 ?>
