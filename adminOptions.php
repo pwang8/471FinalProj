@@ -3,7 +3,7 @@
             <h1>Admin Options</h1>
                         
             <br><h2>Display Purchased Products</h2>
-            <form action="purchase.php" method="POST" >  
+            <form action="displayPurchase.php" method="POST" >  
                 <input type="submit" value="Display Purchased Products"/> 
             </form>
             <br><h2>Display Registered Customers</h2>

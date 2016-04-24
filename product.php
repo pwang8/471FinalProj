@@ -75,10 +75,10 @@ function addToCart(p_id, session_id)
             </select>  
 
 
-        <p><input class="submitButton" type="submit" value="Find car">
+        <p><input class="submitButton" type="submit" value="Filter Products">
     </form>
           
-    <div id="dispProdDiv" on>
+    <div id="dispProdDiv">
             <?php
                 $results = include("list_products.php");
                 echo '<table border=1px>';
