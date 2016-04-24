@@ -1,6 +1,6 @@
 <?php 
 include ("Header.php");
-//echo "this is the register_function page";
+
 $fname = $_POST["fname"];
 $lname = $_POST["lname"];
 $username = $_POST ["username"];
@@ -9,7 +9,6 @@ $email = $_POST ["email"];
 $address = $_POST ["address"];
 $country = $_POST ["country"];
 $phone = $_POST ["phone"];
-//echo $fname. "<br>". $lname. "<br>";
 // Create connection
 $con=mysqli_connect('localhost','root','CPSC471!','final_project');
 // Check connection
