@@ -22,7 +22,7 @@
     function json_addToCart($pId, $amount, $sessionId)
     {
         $valid = false;
-        $message = "default message";
+        $message = "Something went wrong with the insertion process";
 		//Check if the name was inserted in the URL request (webservice.php?method=addUser&name=????)
 		if (isset($amount)
             && $pId > 0
