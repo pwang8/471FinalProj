@@ -8,10 +8,8 @@
         json_removeFromCart($_GET["productId"], $_GET["sessionId"]);
     if ($method == "purchasePaypal")
         json_purchasePaypal($_GET["sessionId"], $_GET["user"], $_GET["pass"]);
-
     if ($method == "purchaseCredit")
-        json_purchaseCredit($_GET["cardNumber"],$_GET["lName"],$_GET["fName"],$_GET["expiryDate"],$_GET["cvc"]);
-        
+        json_purchaseCredit($_GET["sessionId"], $_GET["cardNumber"],$_GET["lName"],$_GET["fName"],$_GET["expiryDate"],$_GET["cvc"]);
     if ($method == "fillCartDiv")
         json_fillCartDiv($_GET['sessionId']);
     
@@ -86,6 +84,17 @@
                 $purchaseId = getRecentPurchaseId();
                 //Make a new instance of paypal
                 $valid = createPaypal($purchaseId, $user, $pass);
+                if(!$valid)
+                {
+                    $message = "We couldn't add your paypal information.";
+                }
+                else
+                {
+                    $valid = buyCart($sessionId, $purchaseId);
+                    $message = "Purchase successful";
+                    if(!$valid)
+                        $message = "Couldn't remove items from cart";
+                }
             }
         }
         
@@ -95,7 +104,7 @@
 		echo json_encode($output); //Prints your dictionary in JSON format
     }
     
-    function purchaseCredit($cardNumber,$lName,$fName,$expiryDate,$Cvc)
+    function json_purchaseCredit($sessionId, $cardNumber,$lName,$fName,$expiryDate,$Cvc)
     {
         $valid = true;
         $message = "default message";
@@ -111,13 +120,22 @@
             }
             else
             {
-                $message = "Purchase successful";
                 $purchaseId = getRecentPurchaseId();
                 //Make a new instance of credit
                 $valid = createCredit($purchaseId, $cardNumber, $lName, $fName, $expiryDate, $Cvc);
+                if(!$valid)
+                {
+                    $message = "We couldn't add your credit information";
+                }
+                else
+                {
+                    $valid = buyCart($sessionId, $purchaseId);
+                    $message = "Purchase successful";
+                    if(!$valid)
+                        $message = "Couldn't remove items from cart";
+                }
             }
         }
-        
 		$output = array();
 		$output["success"] = $valid;
 		$output["message"] = $message;

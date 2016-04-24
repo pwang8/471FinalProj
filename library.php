@@ -141,7 +141,6 @@
     function calculateTotalCost($sessionId)
     {
         global $link;
-        
         //Clean
         $sessionId = mysqli_real_escape_string($link, $sessionId);
         

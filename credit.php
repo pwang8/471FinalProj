@@ -2,7 +2,6 @@
 <script>
 function creditPurchaseCart(sessionId)
 {
-    alert("hi");
     var Webservice_URL = "http://localhost/471FinalProj/webservice.php"; 
     var cardNumber = document.creditForm.creditCardNumber.value;
     var cardFName = document.creditForm.creditFName.value;
@@ -10,11 +9,11 @@ function creditPurchaseCart(sessionId)
     var expiryDate = document.creditForm.creditExpiryDate.value;
     var cvc = document.creditForm.creditCVC.value;
     
-    //AJAX Request
+    //AJAX Request (purchaseid, user, pass)
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function()
     {
-        alert(xhttp.readyState+"<- rT, status ->"+xhttp.status);
+        //alert(xhttp.readyState+"<- rT, status ->"+xhttp.status);
         //REPLY FROM WEBSERVICE
         if (xhttp.readyState == 4 && xhttp.status == 200)
         {
@@ -34,7 +33,7 @@ function creditPurchaseCart(sessionId)
         }
     };
     //REQUEST TO WEBSERVICE
-    xhttp.open("GET", Webservice_URL + "?method=purchaseCredit&sessionId="+sessionId+"&cardNumber="+creditCardNumber+"&lName="+creditLName+"&fName="+creditFName+"&expiryDate="+creditExpiryDate+"&cvc="+creditCVC, true);
+    xhttp.open("GET", Webservice_URL + "?method=purchaseCredit&sessionId="+sessionId+"&cardNumber="+cardNumber+"&lName="+cardLName+"&fName="+cardFName+"&expiryDate="+expiryDate+"&cvc="+cvc, true);
     xhttp.send();
 }
 </script>

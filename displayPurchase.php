@@ -2,7 +2,7 @@
 <div id="dispPurcDiv" on>
         <?php
             $results = include("list_purchases.php");
-            echo '<table>';
+            echo '<div><table border=1px>';
             echo '<th>Id</th><th>date</th><th>Total</th><th>CustomerID</th>';
             while($row = mysqli_fetch_row($results))
             {
@@ -14,7 +14,7 @@
                 echo '<td>'.$row[4].'</td>';
                 echo '</tr>';
             }
-            echo '</table>';
+            echo '</table></div>';
         ?>
 </div>
 <?php include("Footer.php"); ?>

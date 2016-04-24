@@ -7,7 +7,7 @@ if (!isset($_SESSION['type'])){
 <html>
     <meta charset="UTF-8"> 
     <head>
-        <link href="coolstyle.css" type="text/css" rel="stylesheet">
+        <link href="style.css" type="text/css" rel="stylesheet">
     </head>
     <p>
         <?php        
