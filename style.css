@@ -10,7 +10,7 @@ body {
     padding: 3px;
 }
 
-#main {
+.mainPanel {
     padding: 5px;
     padding-left:  15px;
     padding-right: 15px;
@@ -94,8 +94,8 @@ a.titleButton {
         margin-right: 0px;
         width: 20%;
         height: 50px;
-        line-height: 50px; /* <- changed this */
-        box-sizing: border-box; /* <- added this */
+        line-height: 50px;
+        box-sizing: border-box;
 }
 a.titleButton:hover {
 	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #0688fa), color-stop(1, #2dabf9));
