@@ -34,6 +34,61 @@ function removeFromCart(p_id, session_id)
 }
 </script>
 
+<script>
+function fillCartDiv(cID)
+{
+    var Webservice_URL = "http://localhost/471FinalProj/webservice.php"; 
+    
+    //AJAX Request
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function()
+    {
+        
+        //REPLY FROM WEBSERVICE
+        if (xhttp.readyState == 4 && xhttp.status == 200)
+        {
+            
+            //Receive and decode the response to JSON object
+            var response = JSON.parse(xhttp.responseText);
+            //Check if the success returned was false\
+            
+            if (!response.success)
+            {
+                alert(response.message); //Displays the error message returned from the server
+            }
+            else //If everything was okay
+            {
+                //Displays the message returned from the server
+               
+                var html =  "<div><p>You have: ";
+                html += response.data[0]+" items in your cart</p>";
+                html += "<p>For a total of: $"+response.data[1]+"</p>";
+                html+='<div id="checkoutPanel"><button onclick="window.location=\'paypal.php\'">PayPal</button>';
+                    html+='<button onclick="window.location=\'credit.php\'">Credit</button></div><br>';
+                html += "<table border ='1'><tr><th>Product</th><th>Amount</th><th>Remove</th></tr>"
+                
+                    for (var i=2; i<response.data.length;i++) 	//response.data contains the array of user objects
+                                                        //each userObject contain the id and name of a user
+                    {
+                        var userObject = response.data[i]; //Get the user at a specific index
+                        html += "<tr>";
+                            html += "<td>" + userObject[0] + "</td>";
+                            html += "<td>" + userObject[1] + "</td>";
+                            html += "<td><a href='javascript:removeFromCart(" + userObject[2] + ","+cID+")'>Remove</a></td>";
+                        html += "</tr>";
+                        
+                    }
+                    html+="</table></div>";
+                    
+                    document.getElementById("main").innerHTML = html;
+            }
+        }
+    };
+    //REQUEST TO WEBSERVICE
+    xhttp.open("GET", Webservice_URL + "?method=fillCartDiv&sessionId="+cID, true);
+    xhttp.send();
+}
+</script>
 <div id="main" align="center" style="padding:50px">
     <?php 
         if($_SESSION['type']=="g"){
@@ -41,6 +96,7 @@ function removeFromCart(p_id, session_id)
         }
         else{
             
+<<<<<<< HEAD
         $itemCount = mysqli_query($con, "SELECT SUM(amount) FROM contains WHERE customer_id =".$_SESSION['id']);
         echo '<div><p>'.mysqli_fetch_array($itemCount)[0].' Items in your cart</p></div>';
         
@@ -66,6 +122,15 @@ function removeFromCart(p_id, session_id)
         echo '</div>';
         }
               
+=======
+            echo '<script>fillCartDiv('.$_SESSION['id'].');</script>';
+            
+            //echo '<div id="checkoutPanel">';
+            //echo '<button onclick="window.location=\'paypal.php\'">PayPal</button>';
+            //echo '<button onclick="window.location=\'credit.php\'">Credit</button>';
+            //echo '</div>';
+        }      
+>>>>>>> origin/master
     ?>
 
 </div>
