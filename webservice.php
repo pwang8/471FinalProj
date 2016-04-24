@@ -12,6 +12,10 @@
         json_purchaseCredit($_GET["sessionId"], $_GET["cardNumber"],$_GET["lName"],$_GET["fName"],$_GET["expiryDate"],$_GET["cvc"]);
     if ($method == "fillCartDiv")
         json_fillCartDiv($_GET['sessionId']);
+    if($method == "getCustomer")
+        json_getCustomer($_GET['sessionId']);
+    if($method == "updateCustomer")
+        json_updateCustomer($_GET['cID'], $_GET['f_name'], $_GET['l_name'], $_GET['address'], $_GET['phone_number'], $_GET['country'], $_GET['username'], $_GET['password'], $_GET['email']);
     
     //Functions ---------------------------------------------------------------------
     
@@ -106,7 +110,7 @@
     
     function json_purchaseCredit($sessionId, $cardNumber,$lName,$fName,$expiryDate,$Cvc)
     {
-        $valid = true;
+        $valid = false;
         $message = "default message";
         
         if(isset($cardNumber) && isset($lName) && isset($fName) && isset($expiryDate) && isset($Cvc))
@@ -159,8 +163,40 @@
 		echo json_encode($output);
     }
 
+    function json_getCustomer($cID)
+    {
+        $valid = false;
+        $message = "Failed to retrieve customer.";
+        $output = array();
+        if(isset($cID))
+        {
+            $valid = true;
+            $message = "Customer info populated";
+            $output["data"] = getCustomer($cID);
+        }
+        else
+        {
+            $output["data"] = null;
+        }
+        $output["success"] = $valid;
+        $output["message"] = $message;
+        echo json_encode($output);
+    }
 
-
+    function json_updateCustomer($cID, $f_name, $l_name, $address, $phone_number, $country, $username, $password, $email)
+    {
+        $valid = false;
+        $message = "Failed to update customer";
+        $output = array();
+        if(isset($cID) && isset($f_name) && isset($l_name) && isset($address) && isset($phone_number) && isset($country) && isset($username) && isset($password) && isset($email))
+        {
+            $valid = updateCustomer($cID, $f_name, $l_name, $address, $phone_number, $country, $username, $password, $email);
+            $message = "Customer updated";
+        }
+        $output["success"] = $valid;
+        $output["message"] = $message;
+        echo json_encode($output);
+    }
 
 
 
