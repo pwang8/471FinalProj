@@ -98,8 +98,25 @@
     function purchaseCredit($cardNumber,$lName,$fName,$expiryDate,$Cvc)
     {
         $valid = true;
-        $message = "Hi".$cardNumber.$lName.$fName.$expiryDate.$Cvc;
+        $message = "default message";
         
+        if(isset($cardNumber) && isset($lName) && isset($fName) && isset($expiryDate) && isset($Cvc))
+        {
+            $totalCost = calculateTotalCost($sessionId);
+            //Creates a general purchase on the database
+            $valid = createPurchase($sessionId, $totalCost);
+            if(!$valid)
+            {
+                $message = "Something went wrong with the purchase";
+            }
+            else
+            {
+                $message = "Purchase successful";
+                $purchaseId = getRecentPurchaseId();
+                //Make a new instance of credit
+                $valid = createCredit($purchaseId, $cardNumber, $lName, $fName, $expiryDate, $Cvc);
+            }
+        }
         
 		$output = array();
 		$output["success"] = $valid;

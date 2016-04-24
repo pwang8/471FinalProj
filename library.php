@@ -115,6 +115,29 @@
         return $success;
     }
 
+    function createCredit($purchaseId, $cardNumber, $lName, $fName, $expiryDate, $Cvc)
+    {
+        $success = false;
+        global $link;
+        
+        //clean variables
+        $purchaseId = mysqli_real_escape_string($link, $purchaseId);
+        $cardNumber = mysqli_real_escape_string($link, $cardNumber);
+        $lName = mysqli_real_escape_string($link, $lName);
+        $fName = mysqli_real_escape_string($link, $fName);
+        $expiryDate = mysqli_real_escape_string($link, $expiryDate);
+        $Cvc = mysqli_real_escape_string($link, $Cvc);
+        
+        $SQL = "INSERT INTO `credit`(`purchase_id`, `expiry_date`, `cvc`, `card_number`, `fname`, `lname`) VALUES (".$purchaseId.",'".$expiryDate."',".$Cvc.",".$cardNumber.",'".$fName."','".$lName."')";
+        $results = mysqli_query($link,$SQL);
+        if($results)
+        {
+            $success = true;
+        }
+        
+        return $success;
+    }
+    
     function calculateTotalCost($sessionId)
     {
         global $link;
