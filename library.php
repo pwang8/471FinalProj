@@ -144,9 +144,37 @@
         $sql1= "UPDATE product SET `stock` = ".$stock[0]." WHERE product_id=".$productId;
         return mysqli_query($link, $sql1);    
     }
+    
+    function cartInformation($cID){
+        global $link;
+        $toReturn = array();
+        
+        //How many items in the users cart
+        $itemCount = mysqli_query($link, "SELECT SUM(`amount`) FROM `contains` WHERE `customer_id` =".$cID);
+        $toReturn[] = mysqli_fetch_array($itemCount)[0];
+        
+        $totalQuery ='SELECT SUM(c.amount * p.price) AS `total` FROM `contains` AS c JOIN `product` p ON p.product_id = c.product_id WHERE c.customer_id ='.$cID;
+        $total = mysqli_query($link,$totalQuery);
+        
+        //Add the total to the array
+        $toReturn[] = number_format(mysqli_fetch_array($total)[0],2);
+        
+        //Add every item of the cart/ the amount to the array
+        $productTableSQL ="SELECT p.product_name, c.amount, p.product_id FROM contains AS c, product AS p WHERE c.customer_id = ".$cID." AND c.product_id = p.product_id";
+        $inCart = mysqli_query($link, $productTableSQL);
+        while($row = mysqli_fetch_array($inCart)){
+            $itemInCart = array();
+            $itemInCart[] = $row[0];
+            $itemInCart[] = $row[1];
+            $itemInCart[] = $row[2];
+            $itemInCart[] = $cID;
+            $toReturn[] = $itemInCart;
+        }
+        return $toReturn;
+    }
 
 
-
+    
 
 
 
