@@ -1,7 +1,7 @@
 <?php include("Header.php");?>
     <title>Our Company</title>
     
-    <div align="center" id="main" style="height:auto">
+    <div align="center" id="main" class="window" style="height:auto">
         <h1>Welcome</h1>
         <h2 align="center">What can you do here?</h2>
            

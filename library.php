@@ -156,8 +156,8 @@
         $success = true;
         
         //Clean all the variables that you will use in creating your SQL statement to avoid "SQL Injection"
-		$id = mysqli_real_escape_string($link, $cID);
-		$pId = mysqli_real_escape_string($link, $pId);
+		$cID = mysqli_real_escape_string($link, $cID);
+		$pID = mysqli_real_escape_string($link, $pID);
         
         $findAllInCart = "SELECT * FROM contains WHERE customer_id =".$cID;
         $allInCart = mysqli_query($link, $findAllInCart);
@@ -191,6 +191,9 @@
         global $link;
         $toReturn = array();
         
+        //Clean variables
+        $cID = mysqli_real_escape_string($link, $cID);
+        
         //How many items in the users cart
         $itemCount = mysqli_query($link, "SELECT SUM(`amount`) FROM `contains` WHERE `customer_id` =".$cID);
         $toReturn[] = mysqli_fetch_array($itemCount)[0];
@@ -214,6 +217,7 @@
         }
         return $toReturn;
     }
+<<<<<<< HEAD
     
     function filteredProducts($filter){
         global $link;
@@ -245,10 +249,39 @@
             $filteredProdArray[] = $productInfo;
         }
         return $filteredProdArray;
+=======
+
+    function getCustomer($sessionId)
+    {
+        global $link;
+        $sessionId = mysqli_real_escape_string($link, $sessionId);
+        
+        $SQL = "SELECT * FROM `customer` WHERE `customer_id`= ".$sessionId;
+        $results = mysqli_query($link, $SQL);
+        $userinfo = mysqli_fetch_row($results);
+        return $userinfo;
+>>>>>>> origin/master
     }
     
+    function updateCustomer($cID, $f_name, $l_name, $address, $phone_number, $country, $username, $password, $email)
+    {
+        global $link;
+        //cleanse all the variables! :D
+        $cID = mysqli_real_escape_string($link, $cID);
+        $f_name = mysqli_real_escape_string($link, $f_name);
+        $l_name = mysqli_real_escape_string($link, $l_name);
+        $address = mysqli_real_escape_string($link, $address);
+        $phone_number = mysqli_real_escape_string($link, $phone_number);
+        $country = mysqli_real_escape_string($link, $country);
+        $username = mysqli_real_escape_string($link, $username);
+        $password = mysqli_real_escape_string($link, $password);
+        $email = mysqli_real_escape_string($link, $email);
+        
+        $SQL = "UPDATE `customer` SET `customer_id`=".$cID.",`f_name`='".$f_name."',`l_name`='".$l_name."',`address`='".$address."',`phone_number`='".$phone_number."',`country`='".$country."',`customer_username`='".$username."',`customer_password`='".$password."',`email_address`='".$email."' WHERE customer_id=".$cID;
+        $results = mysqli_query($link, $SQL);
+        return $results;
+    }
     
-
 
 
 

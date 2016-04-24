@@ -98,7 +98,7 @@ function fillProductDiv(responseData,sessionID)
     alert("Console reading time");
 }
 </script>
-<div id="prodMain" align="center">            
+<div id="prodMain" class="window" align="center">            
 
     <h1>Select your Product</h1>
     <h2>Select options from the drop down menu</h2>

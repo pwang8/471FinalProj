@@ -65,8 +65,8 @@ function fillCartDiv(cID)
                 var html =  "<div><h1> List of items </h1><p>You have: ";
                 html += response.data[0]+" items in your cart</p>";
                 html += "<p>For a total of: $"+response.data[1]+"</p>";
-                html+='<div id="checkoutPanel"><button onclick="window.location=\'paypal.php\'">PayPal</button>';
-                    html+='<button onclick="window.location=\'credit.php\'">Credit</button></div><br>';
+                html+='<div id="checkoutPanel"><button class="submitButton" onclick="window.location=\'paypal.php\'">PayPal</button>';
+                    html+='<button class="submitButton" onclick="window.location=\'credit.php\'">Credit</button></div><br>';
                 html += "<table border ='1'><tr><th>Product</th><th>Amount</th><th>Remove</th></tr>";
                 
                     for (var i=2; i<response.data.length;i++) 	//response.data contains the array of user objects
@@ -91,7 +91,7 @@ function fillCartDiv(cID)
     xhttp.send();
 }
 </script>
-<div id="main" align="center" style="padding:50px">
+<div id="main" class="window" align="center" style="padding:50px">
     <?php 
         if($_SESSION['type']=="g"){
             echo '<div><p>You must sign in in order to view your cart!</p></div>';
