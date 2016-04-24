@@ -8,16 +8,13 @@
         json_removeFromCart($_GET["productId"], $_GET["sessionId"]);
     if ($method == "purchasePaypal")
         json_purchasePaypal($_GET["sessionId"], $_GET["user"], $_GET["pass"]);
-<<<<<<< HEAD
+
     if ($method == "purchaseCredit")
         json_purchaseCredit($_GET["cardNumber"],$_GET["lName"],$_GET["fName"],$_GET["expiryDate"],$_GET["cvc"]);
-    
-=======
->>>>>>> origin/master
-    
-    if ($method == "fillCartDiv"){
+        
+    if ($method == "fillCartDiv")
         json_fillCartDiv($_GET['sessionId']);
-    }
+    
     //Functions ---------------------------------------------------------------------
     
     function json_addToCart($pId, $amount, $sessionId)
@@ -98,10 +95,10 @@
 		echo json_encode($output); //Prints your dictionary in JSON format
     }
     
-    function purchaseCredit(cardNumber,lName,fName,expiryDate,Cvc)
+    function purchaseCredit($cardNumber,$lName,$fName,$expiryDate,$Cvc)
     {
         $valid = true;
-        $message = "Hi".cardNumber.lName.fName.expiryDate.Cvc;
+        $message = "Hi".$cardNumber.$lName.$fName.$expiryDate.$Cvc;
         
         
 		$output = array();
